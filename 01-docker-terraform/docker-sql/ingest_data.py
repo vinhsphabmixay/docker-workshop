@@ -26,23 +26,25 @@ parse_dates = [
 ]
 
 
-def run():
-    pg_user = 'root'
-    pg_pass = 'root'
-    pg_host = 'localhost'
-    pg_port = '5432'
-    pg_database = 'ny_taxi'
+import click
 
-    month, year = 1, 2021
+@click.command()
+@click.option('--pg-user', default='root', help='PostgreSQL user')
+@click.option('--pg-pass', default='root', help='PostgreSQL password')
+@click.option('--pg-host', default='localhost', help='PostgreSQL host')
+@click.option('--pg-port', default=5432, type=int, help='PostgreSQL port')
+@click.option('--pg-db', default='ny_taxi', help='PostgreSQL database name')
+@click.option('--target-table', default='yellow_taxi_data', help='Target table name')
+@click.option('--year', default=2021, help='Target year for the data')
+@click.option('--month', default=1, help='Target month for the data')
+@click.option('--chunksize', default=100000, help='Chunk size for data ingestion')
+def run(pg_user, pg_pass, pg_host, pg_port, pg_db, target_table, year, month, chunksize):
+
     
     prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
     url = f"{prefix}yellow_tripdata_{year}-{month:02d}.csv.gz"
 
-    engine = create_engine(f'postgresql+psycopg://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_database}')
-
-    target_table =  'yellow_taxi_data'
-
-    chunksize = 100000
+    engine = create_engine(f'postgresql+psycopg://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}')
 
 
     df_iter = pd.read_csv(
