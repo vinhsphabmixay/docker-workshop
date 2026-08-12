@@ -21,12 +21,14 @@ x-airflow-common:
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_postgres:5432/airflow
     AIRFLOW__WEBSERVER__RBAC: 'True'
     PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
+    GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/keys/gcp-key.json
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ./dbt:/opt/airflow/dbt
     - ~/.dbt:/home/airflow/.dbt
+    - ./keys/gcp-key.json:/opt/airflow/keys/gcp-key.json:ro
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     airflow_postgres:

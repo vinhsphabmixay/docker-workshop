@@ -14,11 +14,11 @@ def gcp_kv_pipeline():
 
     @task
     def set_gcp_project_id():
-        Variable.set(key="GCP_PROJECT_ID", value="airflow-sandbox")
+        Variable.set(key="GCP_PROJECT_ID", value="airflow-sandbox-505312")
 
     @task
     def set_gcp_location():
-        Variable.set(key="GCP_LOCATION", value="europe-west2")
+        Variable.set(key="GCP_LOCATION", value="europe-west1")
 
     @task
     def set_gcp_bucket_name():
@@ -26,7 +26,7 @@ def gcp_kv_pipeline():
 
     @task
     def set_gcp_dataset():
-        Variable.set(key="GCP_DATASET", value="zoomcamp-course")
+        Variable.set(key="GCP_DATASET", value="zoomcamp")
 
     (
         set_gcp_project_id()

@@ -1,32 +1,37 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.providers.google.cloud.operators.gcs import GCSCreateBucketOperator
-from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateEmptyDatasetOperator
+from airflow.operators.bash import BashOperator
 
 with DAG(
     dag_id="07_gcp_setup",
     schedule=None,
-    start_date=datetime(2024,1,1),
+    start_date=datetime(2024, 1, 1),
     catchup=False,
-    tags=['zoomcamp', 'kv']
+    tags=["zoomcamp", "gcp"],
 ) as dag:
 
-    create_gcs_bucket = GCSCreateBucketOperator(
+    GCP_AUTH_CMD = "gcloud auth activate-service-account --key-file=/opt/airflow/keys/gcp-key.json"
+
+    # 1. Create GCS Bucket using gcloud CLI
+    create_gcs_bucket = BashOperator(
         task_id="create_gcs_bucket",
-        bucket_name="{{var.value.GCP_BUCKET_NAME}}",
-        project_id="{{var.value.GCP_PROJECT_ID}}",
-        location="{{var.value.GCP_LOCATION}}",
-        storage_class="REGIONAL",
-        gcp_conn_id="google_cloud_default"
+        bash_command=f"""
+        {GCP_AUTH_CMD}
+        gcloud storage buckets create gs://{{{{ var.value.GCP_BUCKET_NAME }}}} \
+            --project={{{{ var.value.GCP_PROJECT_ID }}}} \
+            --location={{{{ var.value.GCP_LOCATION }}}} \
+            --default-storage-class=REGIONAL || true
+        """,
     )
 
-    create_bq_dataset = BigQueryCreateEmptyDatasetOperator(
+    # 2. Create BigQuery Dataset using bq CLI
+    create_bq_dataset = BashOperator(
         task_id="create_bq_dataset",
-        dataset_id="{{var.value.GCP_DATASTE}}",
-        project_id="{{var.value.GCP_PROJECT_ID}}",
-        location="{{var.value.GCP_LOCATION}}",
-        exists_ok=True,
-        gcp_conn_id="google_cloud_default"
+        bash_command=f"""
+        {GCP_AUTH_CMD}
+        bq show --project_id={{{{ var.value.GCP_PROJECT_ID }}}} {{{{ var.value.GCP_DATASET }}}} > /dev/null 2>&1 || \
+        bq mk -d -f --location={{{{ var.value.GCP_LOCATION }}}} {{{{var.value.GCP_PROJECT_ID}}}}:{{{{ var.value.GCP_DATASET }}}}
+        """,
     )
 
     create_gcs_bucket >> create_bq_dataset
