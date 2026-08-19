@@ -1,0 +1,82 @@
+user:
+  outputs:
+    default:
+      keyfile_json:
+        auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+        auth_uri: https://accounts.google.com/o/oauth2/auth
+        client_email: vinh-airflow@airflow-sandbox-505312.iam.gserviceaccount.com
+        client_id: '106593153876807083836'
+        client_x509_cert_url: https://www.googleapis.com/robot/v1/metadata/x509/vinh-airflow%40airflow-sandbox-505312.iam.gserviceaccount.com
+        private_key: '-----BEGIN PRIVATE KEY-----
+
+          MIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCw5eQy7iljZgMi
+
+          h2fKSLHmLMfW2jh0p4JseASmAhe4B7vwKPvysjiDZKygkdPFk3/uXqChCeWb9FzI
+
+          Uo8MYXRfY96s3mChPkoQN7mO2U3O7hTJLYdiShocUBWCYQsNZ9GgG6ii9B6F85Mt
+
+          HsiFhxuAHdI1yymh15rPThvnS9oLCdtJ+qLVspnIt5WtgcjHeRmqajXy2flKuT05
+
+          YbcLmdRDTfZp4fRG2Hw4YIkRQUSHrVUbxIXIJM9u9U5DMAF+QLRIUjfXAeaJwsgv
+
+          eFDSyTkGz9j0BLgdpNu3r7q0Jr/uxLIrWopATwanb0BDHSAyeiYwiK8si5BvWGaH
+
+          GiFofi79AgMBAAECgf88AGjm3YwsVZhlSIhr6ecYVm1ySD0zVEi+LKIRrPlenUD3
+
+          X5oV4rLzM7Kvbsc7Z6HSY0ZuA8KzTgTVQyuXh3bG5EPOCZ+9EY5i8dkpcDZ0JKKS
+
+          77PReFENnscCR5L4I77MD+r4sCpU78l8BHT/gFRToHSCH+cp03fZ2SSdz5yly/Z0
+
+          4iu+J5sxcRpUlAcdCzHiobVX4E0W3WpnKWkrMV1xU6zhKJYNGOMjZNaYBy8QkIwX
+
+          85WSorV5TB84Y9uX3jhJTJtgNcjOJoipOVbuq4we7cv52lKiOHimtOhiL+xDGy7t
+
+          H+vaUFUvxB5zaGMU1fKdXrMJM0tYNOW2YDTFznECgYEA6RFxxp97Lls1Z7qYXxiD
+
+          gmirbdv/Y6eWpFDUwAdgP2sCsgVsXwv7wDDEKbop6Zi5ZaawvR0KLgfX78MMdOdR
+
+          NInj8NbX7X6Gqj/fzJmfmb+TBLfyEKS71Gy3I+wpQ9hVYyYVYpwSx38ZhQo3/y9M
+
+          2l0Mmk+871e4luoZ/WpNuBUCgYEAwk2gEeOwvXFMPVyDItp60uvG29FSiu3S+1+5
+
+          PsONA35M4n6AALYlJXhJZr8psxrvLt47jSRQV2A3ntEtoz3TD0IPRIThRSjokXhq
+
+          0WXZGULiqUZxGQRUU9UCu9vbKymDH8ELn5m3CB+wtySroE6ucFVAMSXTD4Q2cAlH
+
+          IxBVLUkCgYB8CiOyYOhPCI3Isd8sJUDAY/Jwmng2UlfzBW3k8UgBGHOryQUfJKKM
+
+          a6fKyWBLCVQKTIedblofm18KJJV5li56trRQVhc/N2p2K15xZoUxb2rQRRGYWAP7
+
+          Dwz9Gk/v4q+2/+q7u3KnJ/at/n1E26icQo9VhQB5pQcBkn/Yhf3s7QKBgQCcnil6
+
+          ggfCjAKiK2HgxC7guQAvy4g3SAAac0xEVSfjOvkKUGEpMai7jTvNQCWCoyFMrAFg
+
+          gXbpFzt+HqokvP7Ve7AG0P0r3A+qwl+HrgrSm+FMBOXA/oZilH6BonQFVI7HF7og
+
+          yayJNdIhrcNRklp1XaJCe3SnOzEOGcxnbRDbUQKBgFZyqiz2RP0iNQUXEmtijmeL
+
+          caKySYsDgclvurrdIhJYkwRs1o+ue0qbo8nBP1f7vdq4HjmgeZxYLRy9AgNXII5L
+
+          5Fpd3jrIIFSFAy1nad5J704+JNmFcbuR4/1gClpyQYxVFBr04WNsh8Xv3/rIzWAU
+
+          aAZ9eYl2lRuRozwqNHKO
+
+          -----END PRIVATE KEY-----
+
+          '
+        private_key_id: aa793a352573b37c2bfcc7333b390820cd4c6380
+        project_id: airflow-sandbox-505312
+        token_uri: https://oauth2.googleapis.com/token
+        type: service_account
+      method: service-account-json
+      project: airflow-sandbox-505312
+      schema: dbt_vinhsphabmixay
+      scopes:
+      - https://www.googleapis.com/auth/bigquery
+      - https://www.googleapis.com/auth/cloud-platform
+      - https://www.googleapis.com/auth/drive
+      - https://www.googleapis.com/auth/userinfo.email
+      target_name: default
+      threads: 4
+      type: bigquery
+  target: default
