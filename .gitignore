@@ -265,3 +265,7 @@ terraform.rc
 # planout
 
 keys/
+
+*.duckdb
+*.csv.gz
+gcp-key.json
