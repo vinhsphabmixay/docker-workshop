@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: airflow-sandbox-505312
+    schema: zoomcamp_2
+
+    tables:
+      - name: green_tripdata_20192020
+      - name: yellow_tripdata_20192020
