@@ -58,6 +58,6 @@ from trips_unioned
 inner join dim_zones as pickup_zone
     on cast(trips_unioned.pickup_locationid as int64) = cast(pickup_zone.locationid as int64)
 inner join dim_zones as dropoff_zone
-    on cast(trips_unioned.pickup_locationid as int64) = cast(dropoff_zone.locationid as int64)
+    on cast(trips_unioned.dropoff_locationid as int64) = cast(dropoff_zone.locationid as int64)
 
 -- Gros zizi
