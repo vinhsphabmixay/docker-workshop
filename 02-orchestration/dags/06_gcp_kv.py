@@ -26,7 +26,7 @@ def gcp_kv_pipeline():
 
     @task
     def set_gcp_dataset():
-        Variable.set(key="GCP_DATASET", value="zoomcamp")
+        Variable.set(key="GCP_DATASET", value="zoomcamp_2")
 
     (
         set_gcp_project_id()
